@@ -11,18 +11,24 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/h.do")
 public class HelloStart extends HttpServlet {
-
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	int sum =0;
-	for(int i=0; i<=10; i++) {
-		sum+=i;
-	}
-	PrintWriter out = response.getWriter();
-	out.println("<html>");
-	out.println("<body>");
-	out.println(sum);
-	out.println("</body>");
-	out.println("</html>");
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 1. 클라이언트의 요청을 받는 작업(Parameter 수집) -> Controller(Servlet)
+		// 2. 처리하는 작업(비즈니스 로직) -> Model(Java class)
+		int sum = 0;
+		for (int i = 0; i <= 10; i++) {
+			sum += i;
+		}
+		
+		// 3. 요청한 클라이언트에게 응답하는 작업(프리젠테이션 로직)
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<body>");
+		out.println(sum);
+		out.println("</body>");
+		out.println("</html>");
+		// Servlet과 Model로 회원관리 만들기
+	
 	}
 
 }
