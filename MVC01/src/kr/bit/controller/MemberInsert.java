@@ -1,12 +1,15 @@
 package kr.bit.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.bit.model.MemberDAO;
 import kr.bit.model.MemberVO;
 
 @WebServlet("/memberInsert.do")
@@ -26,7 +29,7 @@ public class MemberInsert extends HttpServlet {
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 //	System.out.println(id);
-		MemberVO mem = new MemberVO(id, pass, name, age, email, phone);
+//		MemberVO mem = new MemberVO(id, pass, name, age, email, phone);
 		MemberVO vo = new MemberVO();
 		vo.setId(id);
 		vo.setPass(pass);
@@ -34,7 +37,19 @@ public class MemberInsert extends HttpServlet {
 		vo.setAge(age);
 		vo.setEmail(email);
 		vo.setPhone(phone);
-		System.out.println(mem.toString());
+//		System.out.println(mem.toString()); //출력 확인
+		//Model 연동부분
+		MemberDAO dao = new MemberDAO();
+		int cnt=dao.memberInsert(vo);
+		PrintWriter out = response.getWriter();
+		if(cnt>0) {
+			//가입 성공
+			out.println("insert success");
+		}else {
+			//가입 실패 -> 예외처리
+			throw new ServletException("not insert");
+		}
+		
 	}
 
 }
