@@ -6,9 +6,10 @@ pass varchar(20) not null,
 name varchar(30) not null,
 age int not null,
 email varchar(30) not null,
-phone varchar(30) not null
+phone varchar(30) not null,
+unique key(id)
 )
-
+drop table member;
 --member 테이블 내용 검색
 select * from member;
 
@@ -20,3 +21,5 @@ update member set age=30, phone='010-5678-1234' where id='admin';
 
 -- delete (삭제)
 delete from member where id='admin';
+
+alter table member modify column num,id varchar(20) primary key;
