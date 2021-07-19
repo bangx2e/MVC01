@@ -43,7 +43,8 @@ public class MemberInsert extends HttpServlet {
 		int cnt=dao.memberInsert(vo);
 		PrintWriter out = response.getWriter();
 		if(cnt>0) {
-			//가입 성공
+			//가입 성공 -> 회원 리스트 페이지로 Redirect 해준다
+			response.sendRedirect("/MVC01/memberList.do");
 			out.println("insert success");
 		}else {
 			//가입 실패 -> 예외처리

@@ -14,7 +14,7 @@ drop table member;
 select * from member;
 
 -- insert (저장)
-insert into member(id, pass, name, age, email, phone) values('admin','admin','관리자','31','test@test.com','010-1234-5678');
+insert into member(id, pass, name, age, email, phone) values('id','pass','관리자2','31','test@test.com','010-1234-5678');
 
 -- update (수정)
 update member set age=30, phone='010-5678-1234' where id='admin';
