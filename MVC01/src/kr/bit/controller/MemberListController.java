@@ -40,25 +40,27 @@ public class MemberListController extends HttpServlet {
 		out.println("<th>나이</th>");
 		out.println("<th>이메일</th>");
 		out.println("<th>연락처</th>");
+		out.println("<th>삭제</th>");
 		out.println("</tr>");
 		out.println("</thead>");
 		out.println("<tbody>");
-		
+
 		for (MemberVO vo : list) {
 			out.println("<tr>");
 			out.println("<td>" + vo.getNum() + "</td>");
-			out.println("<td>" + vo.getId() + "</td>");
+			out.println("<td><a href='/MVC01/memberContent.do?num=" + vo.getNum() + "'>" + vo.getId() + "</td>");
 			out.println("<td>" + vo.getPass() + "</td>");
 			out.println("<td>" + vo.getName() + "</td>");
 			out.println("<td>" + vo.getAge() + "</td>");
 			out.println("<td>" + vo.getEmail() + "</td>");
 			out.println("<td>" + vo.getPhone() + "</td>");
+			out.println("<td><a href='/MVC01/memberDel.do?num=" + vo.getNum() + "'>삭제</a></td>");
 			out.println(" </tr>");
 		}
-		
+
 		out.println("</tbody>");
 		out.println("<tr>");
-		out.println("<td colspan='7' align='right'>");
+		out.println("<td colspan='8' align='right'>");
 		out.println("<a href='member/memberReg.html' >회원가입</a>");
 		out.println("</td>");
 		out.println("</tr>");
