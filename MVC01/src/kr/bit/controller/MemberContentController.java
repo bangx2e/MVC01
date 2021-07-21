@@ -23,6 +23,8 @@ public class MemberContentController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<body>");
+		out.println("<form method='post' action='/MVC01/memberUpdate.do'>");
+		out.println("<input type='hidden' name='num' value='"+vo.getNum()+"'/>");
 		out.println("<table border='1'>");
 		if (vo != null) {
 			out.println("<tr>");
@@ -56,18 +58,20 @@ public class MemberContentController extends HttpServlet {
 				out.println("<td>전화번호</td>");
 				out.println("<td><input type='text' name='phone' value='"+vo.getPhone()+"'>"+"</td>");
 			out.println("</tr>");
-			out.println("<tr>");
-			out.println("<td><a href='/MVC01/memModify.do'>수정</a></td>");
-			out.println("</tr>");
-			out.println("<tr>");
-			out.println("<td><a href='/MVC01/memModify.do'>수정</a></td>");
-			out.println("</tr>");
 		} else {
 			out.println("<tr>");
 			out.println("<td>일치하는 회원이 없습니다</td>");
 			out.println("</tr>");
 		}
+		out.println("<tr>");
+		out.println("<td colspan='2' align='center'>");
+		out.println("<input type='submit' value='수정하기'/>");
+		out.println("<input type='reset' value='취소'/>");
+		out.println("<a href='/MVC01/memberList.do'>리스트</a>");
+		out.println("</td>");
+		out.println("</tr>");
 		out.println("</table>");
+		out.println("</form>");
 		out.println("</body>");
 		out.println("</html>");
 	}
